@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="my-order">
+    <template>
+        <style>
+            :host{
+                display: block;
+            }
+        </style>
+        <template is="dom-repeat" items="{{goods}}">
+            <div class="item" on-click="onCheck">
+                <span>订单编号:</span><span>{{item.id}}</span>
+                <span>商品名称:</span><span>{{item.name}}</span>
+                <span>商品价格:</span><span>{{item.price}}</span>
+                <span>商品数量:</span><span>{{item.count}}</span>
+            </div>
+        </template>
+    </template>
+    <script>
+        class MyOrder extends Polymer.Element{
+            static get is(){return 'my-order';}
+            static get properties(){
+                return{
+                    goods:{
+                        item:Array,
+                        value:[{
+                            id:1,
+                            name:"促销商品1",
+                            price:26.8,
+                            count:5
+                        },{
+                            id:2,
+                            name:"促销商品2",
+                            price:36.8,
+                            count:8
+                        },{
+                            id:3,
+                            name:"促销商品3",
+                            price:16.8,
+                            count:7
+                        },{
+                            id:4,
+                            name:"促销商品4",
+                            price:13.8,
+                            count:9
+                        },]
+                    }
+                }
+            }
+        }
+        window.customElements.define(MyOrder.is,MyOrder);
+    </script>
+</dom-module>

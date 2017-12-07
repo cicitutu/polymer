@@ -1,0 +1,67 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/array-selector.html">
+
+<dom-module id="my-information">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+
+                padding: 10px;
+            }
+        </style>
+        <!--<template is="dom-repeat" id="userList" items="{{users}}">-->
+            <!--<div class="item">-->
+                <!--<span>index:{{index}}</span><br />-->
+                <!--<span>name:{{item.name}}</span><br />-->
+                <!--<span>age:{{item.age}}</span><br />-->
+                <!--<span>email:{{item.email}}</span><br />-->
+                <!--<span>tel:{{item.tel}}</span><br />-->
+                <!--<span>address:{{item.address}}</span>-->
+            <!--</div>-->
+        <!--</template>-->
+
+        <!--<array-selector id="selector" items="{{users}}" selected="{{selected}}"></array-selector>-->
+
+        <!--<form>-->
+            <!--姓名：<input name="name" value="{{selected.name}}"><br>-->
+            <!--年龄：<input type="number" name="age" value="{{selected.age}}"><br>-->
+            <!--邮箱：<input name="email" value="{{selected.email}}"><br>-->
+            <!--电话：<input type="number" name="tel" value="{{selected.tel}}"><br>-->
+            <!--地址：<input name="address" value="{{selected.address}}">-->
+        <!--</form>-->
+        <form>
+        姓名：<input type="text" value="[[user.name]]"><br>
+        年龄：<input type="text" value="[[user.age]]"><br>
+        邮箱：<input type="text" value="[[user.email]]"><br>
+        电话：<input type="text" value="[[user.tel]]"><br>
+        地址：<input type="text" style="width:200px;" value="[[user.address]]"><br>
+            <button on-click="addUser">提交</button>
+        </form>
+
+    </template>
+    <script>
+        class MyInformation extends Polymer.Element{
+            static get is(){return 'my-information';}
+            static get properties(){
+                return{
+                    user:{
+                        type:Object,
+                        value:{
+                            name:"我爱我家",
+                            age:28,
+                            email:"1584831544@163.com",
+                            tel:15876451146,
+                            address:"武汉市硚口区越秀财富中心Today"
+                        }
+                    }
+                }
+            }
+            addUser(){
+                const username = this.$.username.value;
+            }
+        }
+        window.customElements.define(MyInformation.is,MyInformation);
+    </script>
+</dom-module>

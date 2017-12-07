@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="my-model">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+
+                padding: 10px;
+            }
+        </style>
+        <template is="dom-repeat" items="{{users}}">
+            <div class="item">
+                <!--<span>index:{{index}}</span><br />-->
+                <span>name:{{item.name}}</span><br />
+                <span>age:{{item.age}}</span><br />
+                <span>email:{{item.email}}</span><br />
+                <span>tel:{{item.tel}}</span><br />
+                <span>address:{{item.address}}</span>
+            </div>
+        </template>
+    </template>
+    <script>
+        class MyModel extends Polymer.Element{
+            static get is(){return 'my-model';}
+            static get properties(){
+                return{
+                    users:{
+                        type:Array,
+                        value:[{
+                            name:"我爱我家",
+                            age:28,
+                            email:"1584831544@163.com",
+                            tel:15876451146,
+                            address:"武汉市硚口区越秀财富中心Today"
+                        }]
+                    }
+                }
+            }
+        }
+        window.customElements.define(MyModel.is,MyModel);
+    </script>
+</dom-module>
